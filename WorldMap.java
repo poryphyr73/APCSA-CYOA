@@ -1,18 +1,18 @@
 public class WorldMap 
 {
-    private Node[][] mapGrid;
+    private static Node[][] mapGrid;
 
     public WorldMap()
     {
         mapGrid = new Node[8][8];
     }
 
-    public Node getNode(int x, int y)
+    public static Node getNode(int x, int y)
     {
         return mapGrid[x][y];
     }
 
-    public boolean[] getSurroundingNodeStates(int x, int y)
+    public static boolean[] getSurroundingNodeStates(int x, int y)
     {
         Node cur = mapGrid[x][y];
         boolean[] ret = new boolean[4];
@@ -23,8 +23,23 @@ public class WorldMap
         return ret;
     }
 
-    public void setNode(int x, int y, Node cur)
+    public static void setNode(int x, int y, Node cur)
     {
         mapGrid[x][y] = cur;
+    }
+
+    public String toString()
+    {
+        String ret = "";
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                ret += (mapGrid.equals(null) ? "__" : "[]" );
+                ret += "\t";
+            }
+            ret += "\n";
+        }
+        return ret;
     }
 }

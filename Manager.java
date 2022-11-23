@@ -1,10 +1,6 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.plaf.synth.Region;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class Manager 
 {
@@ -12,6 +8,10 @@ public class Manager
     private static WorldMap map;
     private static Player p;
     private static String input;
+    private static ArrayList<Integer> methods = new ArrayList<Integer>();
+
+    //global variables
+    private static boolean isAlive = true;
 
     private static void setup()
     {
@@ -29,7 +29,7 @@ public class Manager
         setup();
         printStartingMenu();
         
-        while(1==1)
+        while(isAlive)
         {
             printCurrentNodeData();
             getInput();
@@ -151,6 +151,43 @@ public class Manager
 
         map.setNodeName(5, 7, "the Imperial Capital");
 
+        //#endregion
+        //#region METHOD ARRAY
+        methods.add(imperialFort());
+        methods.add(orcishOutpost());
+        methods.add(northBanditRoad());
+        methods.add(market());
+        methods.add(road41());
+        methods.add(port());
+        methods.add(portBridge());
+        methods.add(seaside());
+        methods.add(banditValley());
+        methods.add(road22());
+        methods.add(townSquare());
+        methods.add(eastBanditRoad());
+        methods.add(road52());
+        methods.add(monastery());
+        methods.add(mountainPass());
+        methods.add(home());
+        methods.add(orchard());
+        methods.add(road43());
+        methods.add(crossroads());
+        methods.add(miningTown());
+        methods.add(mines());
+        methods.add(witchTower());
+        methods.add(road24());
+        methods.add(bog());
+        methods.add(riverland());
+        methods.add(wizardTower());
+        methods.add(border());
+        methods.add(road25());
+        methods.add(road55());
+        methods.add(orcCapital());
+        methods.add(road16());
+        methods.add(temple());
+        methods.add(brokenBridge());
+        methods.add(road56());
+        methods.add(castle());
         //#endregion
     }
 
@@ -332,161 +369,101 @@ public class Manager
             return;
         }
 
-        //#region CALLING EXTRANEOUS METHODS
-        int x = map.getPositionX();
-        int y = map.getPositionY();
-
-        if(y == 0)
-        {
-            if(x == 3) imperialFort();
-        }
-        if(y == 1)
-        {
-            if(x == 0) orcishOutpost();
-            if(x == 2) northBanditRoad();
-            if(x == 3) market();
-            if(x == 4) road41();
-            if(x == 5) port();
-            if(x == 6) portBridge();
-            if(x == 7) seaside();
-        }
-        if(y == 2)
-        {
-            if(x == 0) banditValley();
-            if(x == 2) road22();
-            if(x == 3) townSquare();
-            if(x == 4) eastBanditRoad();
-            if(x == 5) road52();
-        }
-        if(y == 3)
-        {
-            if(x == 0) monastery();
-            if(x == 1) mountainPass();
-            if(x == 2) home();
-            if(x == 3) orchard();
-            if(x == 4) road43();
-            if(x == 5) crossroads();
-            if(x == 6) miningTown();
-            if(x == 7) mines();
-        }
-        if(y == 4)
-        {
-            if(x == 1) witchTower();
-            if(x == 2) road24();
-            if(x == 3) bog();
-            if(x == 5) riverland();
-            if(x == 6) wizardTower();
-        }
-        if(y == 5)
-        {
-            if(x == 1) border();
-            if(x == 2) road25();
-            if(x == 5) road55();
-        }
-        if(y == 6)
-        {
-            if(x == 0) orcCapital();
-            if(x == 1) road16();
-            if(x == 3) temple();
-            if(x == 4) brokenBridge();
-            if(x == 5) road56();
-        }
-        if(y == 7)
-        {
-            if(x == 5) castle();
-        }
-        //#endregion
+        int a = methods.get(0);
+        methods.get(map.getActiveNodeIndex());
     }
 
-    private static void imperialFort()
+    private static int imperialFort()
     {
         boolean guardKilled;
         boolean fortRaided;
         boolean treasureTaken;
         boolean questTaken;
         boolean questFinished;
+        System.out.println("TEST");
+        return 0;
     }
 
-    private static void orcishOutpost()
+    private static int orcishOutpost()
     {
-        
+        return 0;
     }
 
-    private static void witchTower()
+    private static int witchTower()
     {
-
+        return 0;
     }
 
-    private static void northBanditRoad()
+    private static int northBanditRoad()
     {
-
+        return 0;
     }
 
-    private static void market()
+    private static int market()
     {
-
+        return 0;
     }
 
-    private static void road41()
+    private static int road41()
     {
-
+        return 0;
     }
 
-    private static void port(){}
+    private static int port(){return 0;}
 
-    private static void portBridge(){}
+    private static int portBridge(){return 0;}
 
-    private static void seaside(){}
+    private static int seaside(){return 0;}
 
-    private static void banditValley(){}
+    private static int banditValley(){return 0;}
 
-    private static void road22(){}
+    private static int road22(){return 0;}
 
-    private static void townSquare(){}
+    private static int townSquare(){return 0;}
 
-    private static void eastBanditRoad(){}
+    private static int eastBanditRoad(){return 0;}
 
-    private static void road52(){}
+    private static int road52(){return 0;}
 
-    private static void monastery(){}
+    private static int monastery(){return 0;}
 
-    private static void mountainPass(){}
+    private static int mountainPass(){return 0;}
 
-    private static void home(){}
+    private static int home(){return 0;}
 
-    private static void orchard(){}
+    private static int orchard(){return 0;}
 
-    private static void road43(){}
+    private static int road43(){return 0;}
 
-    private static void crossroads(){}
+    private static int crossroads(){return 0;}
 
-    private static void miningTown(){}
+    private static int miningTown(){return 0;}
     
-    private static void mines(){}
+    private static int mines(){return 0;}
 
-    private static void road24(){}
+    private static int road24(){return 0;}
 
-    private static void bog(){}
+    private static int bog(){return 0;}
 
-    private static void riverland(){}
+    private static int riverland(){return 0;}
 
-    private static void wizardTower(){}
+    private static int wizardTower(){return 0;}
 
-    private static void border(){}
+    private static int border(){return 0;}
 
-    private static void road25(){}
+    private static int road25(){return 0;}
 
-    private static void road55(){}
+    private static int road55(){return 0;}
 
-    private static void orcCapital(){}
+    private static int orcCapital(){return 0;}
 
-    private static void road16(){}
+    private static int road16(){return 0;}
 
-    private static void temple(){}
+    private static int temple(){return 0;}
 
-    private static void brokenBridge(){}
+    private static int brokenBridge(){return 0;}
     
-    private static void road56(){}
+    private static int road56(){return 0;}
 
-    private static void castle(){}
+    private static int castle(){return 0;}
 }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class WorldMap 
 {
@@ -68,6 +67,20 @@ public class WorldMap
         if(y < 7 && !mapGrid[x][y + 1].getName().equals("n")) ret += "To your south, lies " + mapGrid[x][y + 1].getName() + "\n";
         if(x > 0 && !mapGrid[x - 1][y].getName().equals("n")) ret += "To your west, lies " + mapGrid[x - 1][y].getName() + "\n";
         return ret;
+    }
+
+    public int getActiveNodeIndex()
+    {
+        int k = 0;
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(mapGrid[j][i].equals(mapGrid[x][y])) return k;
+                if(!mapGrid[j][i].getName().equals("n"))k++;
+            }
+        }
+        return 0;
     }
 
     public int getPositionX()

@@ -1,9 +1,0 @@
-x: 
-y: 
-short: 
-type: 
-look: 
-exits: 
-doors:
-key: 
-properties:

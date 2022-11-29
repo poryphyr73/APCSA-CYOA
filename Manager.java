@@ -16,8 +16,8 @@ public class Manager
     //global variables
     private boolean isAlive = true;
 
-        //farm
-        private boolean isIntroScene = true;
+        //farmHouse
+        private boolean isIntroScene = true, takenFood, takenSword;
 
     public Manager() 
     {
@@ -61,10 +61,10 @@ public class Manager
 
         System.out.println("\nGreat! Now that you've fleshed yourself out a little bit, lets get you out and into the world!");
         drawBannerArt();
-        farm();
+        farmHouse();
     }
 
-    private void farm()
+    private void farmHouse()
     {
         if(isIntroScene)
         {
@@ -78,16 +78,119 @@ public class Manager
 
             while(true)
             {
-                if(!getLowInput().contains("say")) 
+                String cmd = getLowInput();
+
+                if(cmd.equals("help"))
                 {
-                    System.out.println("\n\t\"Answer me!\"");
+                    System.out.println("say [yes, no]");
                     return;
                 }
 
+                if(cmd.contains("say") || !(cmd.contains("yes") || cmd.contains("no"))) 
+                {
+                    System.out.println("\n\t\"Just answer my question please.\"");
+                    return;
+                }
+
+                if(cmd.contains("yes")) System.out.println("\n\t\"Thank you, I appreciate it.\"");
+                else System.out.println("\n\t\"Well I'm sorry I even asked. You're helping, get up.\"");
                 break;
             }
 
+            System.out.println("\n\t\"Your mother and I are leaving right now. Please get some breakfast and meet us there. Bring my fathers sword along with you, I need it sharpened\"");
+            System.out.println("\nAs your father leaves the house, you climb out of bed and walk into the main room of the house");
             isIntroScene = false;
+        }
+
+        System.out.println("\nYou stand in the central room of your parents farmhouse. It always smells of freshly burnt wood and pastries.");
+        System.out.println("What do you do?");
+
+        while(true)
+        {
+            String cmd = getLowInput();
+
+            if(cmd.equals("help"))
+            {
+                System.out.print("\ngo [outside], look [around");
+                if(!takenSword) System.out.print(", for the sword");
+                if(!takenFood) System.out.print(", for breakfast");
+                System.out.println("]");
+                return;
+            }
+
+            if(!(cmd.contains("go") || cmd.contains("look")))
+            {
+                printError();;
+                return;
+            }
+
+            if(cmd.contains("around"))
+            {
+                System.out.println("\nYou stand in the central room of your parents farmhouse. It always smells of fire and fresh pastries.");
+                return;
+            }
+
+            if(cmd.contains("for the sword") && !takenSword)
+            {
+                System.out.println("\nYou look around for your grandfathers sword and find it buried at the bottom of an old trunk.");
+                System.out.println("YOU GOT \"YOUR GRANDFATHER'S SWORD\".");
+                //getSword
+                takenSword = true;
+            }
+
+            if(cmd.contains("for breakfast") && !takenFood)
+            {
+                System.out.println("\nYou check the kitchen for the food your father had mentioned. You come across a fresh baked scone and a bottle of milk. Filling!");
+                System.out.println("YOU GOT \"SCONE\".");
+                System.out.println("YOU GOT \"MILK\".");
+            }
+
+            if(cmd.contains("outside"))
+            {
+                break;
+            }
+
+            printError();
+            return;
+        }
+
+        farm();
+    }
+
+    private void farm()
+    {
+        System.out.println("\nYou find yourself at your parents farm. You grew up here. It is home.");
+        System.out.println("\nTo your north is the road that leads off the property.");
+        System.out.println("To your east is the apple orchard that your parents helped to plant when you were just a young child.");
+        System.out.println("To your south is the beginning of the road that leads down to the orcish country, a very dangerous place.");
+        System.out.println("To your west is the road through the mountains. A monastery of monks is said to be hidden away in the mountains.");
+        System.out.println("\nWhat do you do?");
+
+        char dir = ' ';
+        while(true)
+        {
+            String cmd = getLowInput();
+
+            if(cmd.equals("help")) 
+            {
+                System.out.println("\ngo [north, east, south, west, inside], look [around]");
+                return;
+            }
+
+            if(!(cmd.contains("go") || cmd.contains("look")))
+            {
+                printError();
+                return;
+            }
+
+            if(cmd.contains("go"))
+            {
+                if(cmd.contains("north")) {dir = 'n'; break;}
+                if(cmd.contains("east")) {dir ='e'; break;}
+                if(cmd.contains("south")) {dir = 's'; break;}
+                if(cmd.contains("west")) {dir ='w'; break;}
+                if(cmd.contains("inside")) {dir = 'i'; break;}
+            }
         }
     }
 
@@ -104,5 +207,10 @@ public class Manager
     {
         String input = kb.nextLine();
         return input.toLowerCase();
+    }
+
+    private void printError()
+    {
+        System.out.println("Invalid command! Try again! (Need \"help\"?)");
     }
 }

@@ -64,12 +64,15 @@ public class Manager
         }
 
         System.out.println("\nGreat! Now that you've fleshed yourself out a little bit, lets get you out and into the world! Good luck out there!");
+        
         //drawBannerArt();
+        kb.nextLine();
     }
 
     private static void initializeNodes()
     {
         HashMap<Integer, String> nameCoords = getCoordinates();
+        HashMap<Integer, ArrayList<String>> commands = getCommands();
         ArrayList<String> descs = getLooks();
         for(Integer key : getCoordinates().keySet())
         {
@@ -79,6 +82,10 @@ public class Manager
         for(Node n : map.getNamedNodes())
         {
             n.setData(descs.get(i));
+            for(String cur : commands.get(i))
+            {
+                n.addChoiceData(cur.substring(0, cur.indexOf("-")), cur.substring(cur.indexOf("-") + 1));
+            }
             i++;
         }
     }
@@ -148,6 +155,39 @@ public class Manager
             e.printStackTrace();
         }
         return shorts;
+    }
+
+    private static HashMap<Integer, ArrayList<String>> getCommands()
+    {
+        HashMap<Integer, ArrayList<String>> commands = new HashMap<Integer, ArrayList<String>>();
+        try {
+            File worldData = new File("WorldData/nodeRooms.txt");
+            Scanner reader = new Scanner(worldData);
+            int i = 0;
+            ArrayList<String> comList = new ArrayList<>();
+ 
+            while (reader.hasNextLine()) {
+                String c = reader.nextLine();
+                
+                if(c.contains("com"))
+                {
+                    comList.add(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
+                }
+                else if(c.contains("doors"))
+                {
+                    ArrayList<String> a = comList;
+                    commands.put(i, a);
+                    System.out.println(commands);
+                    i++;
+                    comList.clear();
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return commands;
     }
 
     private static void printCurrentNodeData()

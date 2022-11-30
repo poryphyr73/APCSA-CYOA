@@ -92,7 +92,6 @@ public class Node
         ret += nodeName.toUpperCase();
         ret += "\n\n";
         ret += nodeData;
-        ret += "\n";
 
         return ret;
     }

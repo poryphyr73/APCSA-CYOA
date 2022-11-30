@@ -1,7 +1,11 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
 
 public class Manager 
 {
@@ -19,17 +23,17 @@ public class Manager
         map = new WorldMap(3, 0);
         p = new Player();
         
+        initializeNodes();
         map.initializeGlobalMovementChoices();
-        loadStartingNodeData();
     }
 
     public static void main(String[] args) 
     {
         setup();
         printStartingMenu();
-        getText();
+        getCoordinates();
         
-        while(isAlive)
+        while(p.getHealth() > 0)
         {
             printCurrentNodeData();
             getInput();
@@ -38,29 +42,112 @@ public class Manager
 
     private static void printStartingMenu()
     {
+        System.out.println("Hello! Welcome to the world of **WORKING TITLE**");
+        System.out.println("\nBefore we get started adventuring, how about you tell me a little bit about yourself?");
+        System.out.print("First of all, what name should the characters in this world know you by? ");
+        p.setName(kb.nextLine().toUpperCase());
+        System.out.println("\nWell, it's wonderful to have you with us " + p.getName() + "!");
+        System.out.println("Now lets get to know more about you and your experiences.");
         
+        while(p.getSkillPoints() > 0)
+        {
+            System.out.println("\nPick a skill to add a point to: ");
+            System.out.println("\n[ STRENGTH : " + p.getStat(0) + " (1) ]\t[ DEXTERITY : " + p.getStat(1) + " (2) ]");
+            System.out.println("\n[ WISDOM : " + p.getStat(2) + " (3) ]\t[ CHARISMA : " + p.getStat(3) + " (4) ]");
+            int i = kb.nextInt() - 1;
+            if(i >= 0 && i <= 4)
+            {
+                p.incrementStat(i);
+                p.decrementSP();
+            }
+            else System.out.println("\nInvalid input: Please try again!");
+        }
+
+        System.out.println("\nGreat! Now that you've fleshed yourself out a little bit, lets get you out and into the world! Good luck out there!");
+        //drawBannerArt();
     }
 
-    private static void getText()
+    private static void initializeNodes()
     {
+        HashMap<Integer, String> nameCoords = getCoordinates();
+        ArrayList<String> descs = getLooks();
+        for(Integer key : getCoordinates().keySet())
+        {
+            map.setNode(key / 10, key % 10, new Node(nameCoords.get(key), ""));
+        }
+        int i = 0;
+        for(Node n : map.getNamedNodes())
+        {
+            n.setData(descs.get(i));
+            i++;
+        }
+    }
+
+    private static HashMap<Integer, String> getCoordinates()
+    {
+        HashMap<Integer, String> coords = new HashMap<Integer, String>();
         try {
-            FileReader reader = new FileReader("WorldData/nodeRooms.txt");
-            String line = "";
-            int character;
+            File worldData = new File("WorldData/nodeRooms.txt");
+            Scanner reader = new Scanner(worldData);
+            int coordinate = 0;
+            String name = "";
  
-            while ((character = reader.read()) != -1) {
-                while((character = reader.read()) != ';') line += (char) character;
-                if(line.contains("#"))
+            while (reader.hasNextLine()) {
+                String c = "";
+                c = reader.nextLine();
+
+                if(c.contains("xy"))
                 {
-                    System.out.println(line.substring(line.indexOf("#") + 1, line.indexOf("#") + 3));
-                    line = "";
+                    c = c.substring(c.indexOf(":") + 1, c.indexOf(";"));
+                    coordinate = (c.charAt(0) - 48) * 10 + c.charAt(1) - 48;
+                }
+
+                if(c.contains("short"))
+                {
+                    name = c.substring(c.indexOf(":") + 1, c.indexOf(";"));
+                }
+
+                if(!name.equals("") && coordinate != 0)
+                {
+                    coords.put(coordinate, name);
                 }
             }
             reader.close();
  
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        return coords;
+    }
+
+    private static ArrayList<String> getLooks()
+    {
+        ArrayList<String> shorts = new ArrayList<String>();
+        try {
+            File worldData = new File("WorldData/nodeRooms.txt");
+            Scanner reader = new Scanner(worldData);
+            String desc = "";
+ 
+            while (reader.hasNextLine()) {
+                String c = "";
+                
+                c = reader.nextLine();
+                if(c.contains("look"))
+                {
+                    desc+=c.substring(c.indexOf(":") + 1, c.indexOf(";")) + "\n";
+                }
+                else if(!desc.equals(""))
+                {
+                    shorts.add(desc);
+                    desc = "";
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return shorts;
     }
 
     private static void printCurrentNodeData()

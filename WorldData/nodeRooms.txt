@@ -1,283 +1,283 @@
-xy:     #30;
-short:  the Imperial Fort;
-look:   You stand at the door of a large military fort that should be inhabited by militia of the local imperial city.
-The trouble is, a local band of orcs from an encampment in the souther reaches of the state has taken control
-A guard perched atop a tower yells down to you:
-
-"WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY"
-
-He is the only guard who can currently see you.;
+xy:30;
+short:the Imperial Fort;
+look:You stand at the door of a large military fort that should be inhabited by militia of the local imperial city.;
+look:The trouble is, a local band of orcs from an encampment in the souther reaches of the state has taken control.;
+look:A guard perched atop a tower yells down to you:;
+look:;
+look:    "WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY";
+look:;
+look:He is the only guard who can currently see you.;;
 exits: ;
 doors: ;
 key: ;
 properties: xt?;
 
-xy:     #01;
-short:  the Northern Orcish Outpost;
+xy:01;
+short:the Northern Orcish Outpost;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #21;
-short:  a dirt road;
+xy:21;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
         
-xy:     #31;
-short:  the Northville market;
+xy:31;
+short:the Northville market;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #41;
-short:  the road to the City Port;
+xy:41;
+short:the road to the City Port;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #51;
-short:  the City Port;
+xy:51;
+short:the City Port;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #61;
-short:  the bridge into Seaside City;
+xy:61;
+short:the bridge into Seaside City;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #71;
-short:  Seaside City;
+xy:71;
+short:Seaside City;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #02;
-short:  the Valley of Bandits;
+xy:02;
+short:the Valley of Bandits;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: xt;
 
-xy:     #22;
-short:  a dirt road;
+xy:22;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #32;
-short:  the Northern town square;
+xy:32;
+short:the Northern town square;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #42;
-short:  a dirt road;
+xy:42;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #52;
-short:  a dirt road;
+xy:52;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #03;
-short:  the Monastery;
+xy:03;
+short:the Monastery;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #13;
-short:  the mountain passage;
+xy:13;
+short:the mountain passage;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #23;
-short:  your parents farm;
+xy:23;
+short:your parents farm;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: o;
 
-xy:     #33;
-short:  the Northville orchard;
+xy:33;
+short:the Northville orchard;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #43;
-short:  a dirt road;
+xy:43;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #53;
-short:  the crossroads;
+xy:53;
+short:the crossroads;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #63;
-short:  the Easton mining settlement;
+xy:63;
+short:the Easton mining settlement;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #73;
-short:  the Easton mines;
+xy:73;
+short:the Easton mines;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: xt;
 
-xy:     #14;
-short:  a witch's tower;
+xy:14;
+short:a witch's tower;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #24;
-short:  a dirt road;
+xy:24;
+short:a dirt road;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #34;
-short:  the Haunted Bog;
+xy:34;
+short:the Haunted Bog;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #54;
-short:  Riverland Village;
+xy:54;
+short:Riverland Village;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #64;
-short:  a wizard's tower;
+xy:64;
+short:a wizard's tower;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ?;
 
-xy:     #15;
-short:  the border to the Orcish Territory;
+xy:15;
+short:the border to the Orcish Territory;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #25;
-short:  the road to the border;
+xy:25;
+short:the road to the border;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #55;
-short:  the troll's bridge;
+xy:55;
+short:the troll's bridge;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #06;
-short:  the Orcish Capital;
+xy:06;
+short:the Orcish Capital;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: xxx;
 
-xy:     #16;
-short:  the Wasteland;
+xy:16;
+short:the Wasteland;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: x;
 
-xy:     #36;
-short:  the Sacred Temple;
+xy:36;
+short:the Sacred Temple;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: xt;
         
-xy:     #46;
-short:  a broken bridge;
+xy:46;
+short:a broken bridge;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
         
-xy:     #56;
-short:  Castle Town;
+xy:56;
+short:Castle Town;
 look: ;
 exits: ;
 doors: ;
 key: ;
 properties: ;
 
-xy:     #57;
-short:  the Imperial Capital;
+xy:57;
+short:the Imperial Capital;
 look: ;
 exits: ;
 doors: ;

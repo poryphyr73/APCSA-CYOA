@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class WorldMap 
 {
     private Node[][] mapGrid = new Node[8][8];
@@ -125,6 +127,19 @@ public class WorldMap
     public void removeChoiceData(int x, int y, String key, String value)
     {
         mapGrid[x][y].removeChoices(key, value);
+    }
+
+    public ArrayList<Node> getNamedNodes()
+    {
+        ArrayList<Node> ret = new ArrayList<>();
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(!mapGrid[j][i].getName().equals("n")) ret.add(mapGrid[j][i]);
+            }
+        }
+        return ret;
     }
 
     public void move(char direction)

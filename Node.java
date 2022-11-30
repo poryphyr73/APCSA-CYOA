@@ -65,7 +65,11 @@ public class Node
 
     public void removeChoices(String key, String value)
     {
-        if(choices.keySet().contains(key) && choices.get(key).contains("-" + value)) choices.get(key).remove("-" + value);
+        if(choices.keySet().contains(key) && choices.get(key).contains(value)) 
+        {
+            choices.get(key).remove(value);
+            if(choices.get(key).size() == 0) choices.remove(key);
+        }
         else System.out.println("ERROR");
     }
 

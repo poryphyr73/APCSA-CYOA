@@ -14,9 +14,6 @@ public class Manager
     private static Player p;
     private static String input;
 
-    //global variables
-    private static boolean isAlive = true;
-
     private static void setup()
     {
         kb = new Scanner(System.in);
@@ -24,7 +21,6 @@ public class Manager
         p = new Player();
         
         initializeNodes();
-        map.initializeGlobalMovementChoices();
     }
 
     public static void main(String[] args) 
@@ -78,13 +74,16 @@ public class Manager
         {
             map.setNode(key / 10, key % 10, new Node(nameCoords.get(key), ""));
         }
+        map.initializeGlobalMovementChoices();
         int i = 0;
         for(Node n : map.getNamedNodes())
         {
             n.setData(descs.get(i));
             for(String cur : commands.get(i))
             {
-                n.addChoiceData(cur.substring(0, cur.indexOf("-")), cur.substring(cur.indexOf("-") + 1));
+                System.out.println(cur);
+                if(cur.contains("$")) n.removeChoices(cur.substring(1, cur.indexOf("-")), cur.substring(cur.indexOf("-")));
+                else n.addChoiceData(cur.substring(0, cur.indexOf("-")), cur.substring(cur.indexOf("-") + 1));
             }
             i++;
         }
@@ -175,7 +174,8 @@ public class Manager
                 }
                 else if(c.contains("doors"))
                 {
-                    ArrayList<String> a = comList;
+                    ArrayList<String> a = new ArrayList<>();
+                    for(int j = 0; j < comList.size(); j++) a.add(comList.get(j));
                     commands.put(i, a);
                     System.out.println(commands);
                     i++;
@@ -208,18 +208,7 @@ public class Manager
     private static void loadStartingNodeData()
     {
 
-        //#region ROW1
-        
-        map.addChoiceData(3, 0, "go", "into the fort");
-        map.addChoiceData(3, 0, "attack", "the guard");
-        map.addChoiceData(3, 0, "talk", "to the guard");
-
-        //#endregion
         //#region ROW2
-        
-        map.addChoiceData(0, 1, "approach", "the outpost");
-        map.addChoiceData(0, 1, "approach", "the guard");
-        map.addChoiceData(0, 1, "attack", "the guard");
 
         map.addChoiceData(2, 1, "fight", "the bandit");
         map.addChoiceData(2, 1, "talk", "to the bandit");

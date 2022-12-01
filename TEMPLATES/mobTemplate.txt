@@ -1,0 +1,7 @@
+id:;
+name:;
+danger:;
+talk:;
+take:;
+dmg:;
+hp:;

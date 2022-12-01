@@ -9,14 +9,16 @@ public class Mob extends GameObject
     private String talk;
     private Item take;
     private int hp;
-    private int atk;
+    private int atk1;
+    private int atk2;
 
-    public Mob(String name, int id, int hp, int atk)
+    public Mob(String name, int id, int hp, int atk1, int atk2)
     {
         this.name = name;
         this.id = id;
         this.hp = hp;
-        this.atk = atk;
+        this.atk1 = atk1;
+        this.atk2 = atk2;
     }
 
     public String getName()
@@ -36,7 +38,7 @@ public class Mob extends GameObject
 
     public int getAtk()
     {
-        return atk;
+        return atk1;
     }
 
     public void setName(String name)
@@ -54,8 +56,9 @@ public class Mob extends GameObject
         this.hp = hp;
     }
 
-    public void setAtk(int atk)
+    public void setAtks(int atk1, int atk2)
     {
-        this.atk = atk;
+        this.atk1 = atk1;
+        this.atk2 = atk2;
     }
 }

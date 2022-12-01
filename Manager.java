@@ -7,6 +7,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import GameObjects.*;
+import GameObjects.Items.Armor;
+import GameObjects.Items.Consumable;
+import GameObjects.Items.Item;
+import GameObjects.Items.Weapon;
+import GameObjects.Mobs.Enemy;
+import GameObjects.Mobs.Mob;
+import GameObjects.Mobs.NPC;
 import Commands.*;
 
 
@@ -72,7 +79,9 @@ public class Manager
     {
         HashMap<Integer, String> nameCoords = getCoordinates();
         HashMap<Integer, ArrayList<String>> commands = getCommands();
+        HashMap<Integer, ArrayList<GameObject>> objects = getObjects();
         ArrayList<String> descs = getLooks();
+        
         for(Integer key : getCoordinates().keySet())
         {
             map.setNode(key / 10, key % 10, new Node(nameCoords.get(key), ""));
@@ -84,10 +93,10 @@ public class Manager
             n.setData(descs.get(i));
             for(String cur : commands.get(i))
             {
-                System.out.println(cur);
                 if(cur.contains("$")) n.removeChoices(cur.substring(1, cur.indexOf("-")), cur.substring(cur.indexOf("-")));
                 else n.addChoiceData(cur.substring(0, cur.indexOf("-")), cur.substring(cur.indexOf("-") + 1));
             }
+            for(GameObject g : objects.get(i)) n.addObject(g);
             i++;
         }
     }
@@ -175,7 +184,7 @@ public class Manager
                 {
                     comList.add(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
                 }
-                else if(c.contains("doors"))
+                else if(c.contains("mobs"))
                 {
                     ArrayList<String> a = new ArrayList<>();
                     for(int j = 0; j < comList.size(); j++) a.add(comList.get(j));
@@ -193,6 +202,130 @@ public class Manager
         return commands;
     }
 
+    private static HashMap<Integer, ArrayList<GameObject>> getObjects()
+    {
+        HashMap<Integer, ArrayList<GameObject>> objects = new HashMap<Integer, ArrayList<GameObject>>();
+        try {
+            File worldData = new File("WorldData/nodeRooms.txt");
+            Scanner reader = new Scanner(worldData);
+            int i = 0;
+            ArrayList<GameObject> objList = new ArrayList<>();
+ 
+            while (reader.hasNextLine()) {
+                String c = reader.nextLine();
+                
+                if(c.contains("obj"))
+                {
+                    if(c.contains("m"))
+                    {
+                        Mob cur = getMobData(c.substring(c.indexOf("m") + 1, c.indexOf(";")));
+                        objList.add(cur);
+                    }
+                    else if(c.contains("i"))
+                    {
+                        Item cur = getItemData(c.substring(c.indexOf("i") + 1, c.indexOf(";")));
+                        objList.add(cur);
+                    }
+                }
+                else if(c.contains("key"))
+                {
+                    ArrayList<GameObject> a = new ArrayList<>();
+                    for(int j = 0; j < objList.size(); j++) a.add(objList.get(j));
+                    objects.put(i, a);
+                    i++;
+                    objList.clear();
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return objects;
+    }
+
+    private static Item getItemData(String id)
+    {
+        System.out.println("DEBUG");
+        String type = "";
+        String name = "";
+        int buff = 0;
+
+        try {
+            File worldData = new File("WorldData/items.txt");
+            Scanner reader = new Scanner(worldData);
+            int i = 0;
+ 
+            while (reader.hasNextLine()) {
+                String c = reader.nextLine();
+                
+                if(c.contains("id") && c.contains(id))
+                {
+                    reader.nextLine();
+                    type = c.substring(c.indexOf(":"), c.indexOf(";"));
+                    reader.nextLine();
+                    name = c.substring(c.indexOf(":"), c.indexOf(";"));
+                    reader.nextLine();
+                    buff = Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf(";")).replaceAll("[^0-9]", ""));
+                    break;
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int idInt = Integer.parseInt(id.replaceAll("[^0-9]", ""));
+        if(type.equals("w")) return new Weapon(name, idInt, buff);
+        if(type.equals("a")) return new Armor(name, idInt, buff);
+        return new Consumable(name, idInt, buff);
+    }
+
+    private static Mob getMobData(String id)
+    {
+        boolean danger = false;
+        String name = "";
+        String talk = "";
+        Item take = null;
+        int[] dmgRange = new int[2];
+        int hp = 0;
+
+        try {
+            File worldData = new File("WorldData/items.txt");
+            Scanner reader = new Scanner(worldData);
+            int i = 0;
+ 
+            while (reader.hasNextLine()) {
+                String c = reader.nextLine();
+                
+                if(c.contains("id") && c.contains(id))
+                {
+                    reader.nextLine();
+                    name = c.substring(c.indexOf(":"), c.indexOf(";"));
+                    reader.nextLine();
+                    talk = c.substring(c.indexOf(":"), c.indexOf(";"));
+                    reader.nextLine();
+                    danger = c.substring(c.indexOf(":"), c.indexOf(";")).contains("1");
+                    reader.nextLine();
+                    take = getItemData(c.substring(c.indexOf(":"), c.indexOf(";")));
+                    reader.nextLine();
+                    dmgRange[0] = Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf("-")).replaceAll("[^0-9]", ""));
+                    dmgRange[1] = Integer.parseInt(c.substring(c.indexOf("-"), c.indexOf(";")).replaceAll("[^0-9]", ""));
+                    reader.nextLine();
+                    hp =  Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf(";")).replaceAll("[^0-9]", ""));
+                    break;
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int idInt = Integer.parseInt(id.replaceAll("[^0-9]", ""));
+        if(danger) return new Enemy(name, idInt, hp, dmgRange[0], dmgRange[1]);
+        return new NPC(name, idInt, hp, dmgRange[0], dmgRange[1]);
+    }
+
     private static void printCurrentNodeData()
     {
         System.out.println(map.getNode());
@@ -206,21 +339,6 @@ public class Manager
         input.toLowerCase();
 
         runNodeEvents();
-    }
-
-    private static void loadStartingNodeData()
-    {
-
-        //#region ROW2
-
-        map.addChoiceData(2, 1, "fight", "the bandit");
-        map.addChoiceData(2, 1, "talk", "to the bandit");
-        map.addChoiceData(2, 1, "give", "the bandit your money");
-        map.removeChoiceData(2, 1, "travel", "east");
-        map.removeChoiceData(2, 1, "travel", "south");
-
-        //DEBUG
-        System.out.println(map);
     }
 
     private static void runNodeEvents()
@@ -237,7 +355,6 @@ public class Manager
             getInput();
             return;
         }
-
         if(input.contains("travel"))
         {   
             map.move(input.charAt(input.indexOf('-') + 1));

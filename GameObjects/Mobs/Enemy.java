@@ -2,9 +2,9 @@ package GameObjects.Mobs;
 
 public class Enemy extends Mob
 {
-    public Enemy(String name, int id, int hp, int atk)
+    public Enemy(String name, int id, int hp, int atk1, int atk2)
     {
-        super(name, id, hp, atk);
+        super(name, id, hp, atk1, atk2);
     }
 
     public String getName()
@@ -42,8 +42,8 @@ public class Enemy extends Mob
         super.setHP(hp);
     }
 
-    public void setAtk(int atk)
+    public void setAtks(int atk1, int atk2)
     {
-        super.setAtk(atk);
+        super.setAtks(atk1, atk2);
     }
 }

@@ -10,7 +10,8 @@ look:He is the only guard who can currently see you.;;
 com:goto-fort;
 com:attack-guard;
 com:talkto-guard;
-mobs:002;
+obj:m002;
+items:;
 key: ;
 
 xy:01;
@@ -19,7 +20,7 @@ look: ;
 com:goto-outpost;
 com:goto-guard;
 com:attack-guard;
-doors: ;
+mobs: ;
 key: ;
 
 xy:21;
@@ -30,229 +31,229 @@ com:talkto-bandit;
 com:giveto-bandit;
 com:$travel-east;
 com:$travel-south;
-doors: ;
+mobs: ;
 key: ;
         
 xy:31;
 short:the Northville market;
 look: ;
 com:1-3;
-doors: ;
+mobs: ;
 key: ;
 
 xy:41;
 short:the road to the City Port;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:51;
 short:the City Port;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:61;
 short:the bridge into Seaside City;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:71;
 short:Seaside City;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:02;
 short:the Valley of Bandits;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:22;
 short:a dirt road;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:32;
 short:the Northern town square;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:42;
 short:a dirt road;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:52;
 short:a dirt road;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:03;
 short:the Monastery;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:13;
 short:the mountain passage;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:23;
 short:your parents farm;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:33;
 short:the Northville orchard;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:43;
 short:a dirt road;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:53;
 short:the crossroads;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:63;
 short:the Easton mining settlement;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:73;
 short:the Easton mines;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:14;
 short:a witch's tower;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:24;
 short:a dirt road;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:34;
 short:the Haunted Bog;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:54;
 short:Riverland Village;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:64;
 short:a wizard's tower;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:15;
 short:the border to the Orcish Territory;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:25;
 short:the road to the border;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:55;
 short:the troll's bridge;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:06;
 short:the Orcish Capital;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:16;
 short:the Wasteland;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:36;
 short:the Sacred Temple;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
         
 xy:46;
 short:a broken bridge;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
         
 xy:56;
 short:Castle Town;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;
 
 xy:57;
 short:the Imperial Capital;
 look: ;
 com:- ;
-doors: ;
+mobs: ;
 key: ;

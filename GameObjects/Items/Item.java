@@ -1,6 +1,8 @@
 package GameObjects.Items;
 
-public class Item 
+import GameObjects.GameObject;
+
+public class Item extends GameObject
 {
     private String name;
     private int id;

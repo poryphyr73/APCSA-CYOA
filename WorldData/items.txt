@@ -1,0 +1,4 @@
+id:001;
+type:a;
+name:t-shirt;
+buffs:0000;

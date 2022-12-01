@@ -1,6 +1,10 @@
+package Game;
 import java.util.HashMap;
 
+import GameObjects.Items.Armor;
+import GameObjects.Items.Consumable;
 import GameObjects.Items.Item;
+import GameObjects.Items.Weapon;
 
 public class Player 
 {
@@ -9,6 +13,8 @@ public class Player
     private int skillPoints = 10;
     private int[] stats = new int[4];
     private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
+    private Weapon currentWeapon;
+    private Armor currentArmor;
 
     public Player()
     {
@@ -54,5 +60,32 @@ public class Player
     {
         if(!inventory.keySet().contains(i)) inventory.put(i, 0);
         inventory.put(i, inventory.get(i) + 1);
+    }
+
+    public void useItem(int i)
+    {
+        Item cur = (Item) inventory.keySet().toArray()[i];
+        if(cur.getClass().equals(Weapon.class))
+        {
+            if(!currentWeapon.equals(null)) addItem(cur);
+            currentWeapon = (Weapon) cur;
+        }
+        else if(cur.getClass().equals(Armor.class))
+        {
+            if(!currentArmor.equals(null)) addItem(cur);
+            currentArmor = (Armor) cur;
+        }
+        else if(cur.getClass().equals(Consumable.class))
+        {
+            int buff = cur.getBuff();
+            for(int j = 3; j >= 0; j--)
+            {
+                stats[j] += buff % 10;
+                buff /= 10;
+            }
+        }
+
+        inventory.put(cur, inventory.get(cur) - 1);
+        if(inventory.get(cur) <= 0)  inventory.remove(cur);
     }
 }

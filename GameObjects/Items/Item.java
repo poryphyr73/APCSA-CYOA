@@ -5,10 +5,10 @@ import GameObjects.GameObject;
 public class Item extends GameObject
 {
     private String name;
-    private int id;
+    private String id;
     private int buff;
 
-    public Item(String name, int id, int buff)
+    public Item(String name, String id, int buff)
     {
         this.name = name;
         this.id = id;
@@ -20,7 +20,7 @@ public class Item extends GameObject
         return name;
     }
 
-    public int getId()
+    public String getId()
     {
         return id;
     }
@@ -35,7 +35,7 @@ public class Item extends GameObject
         this.name = name;
     }
 
-    public void setId(int id)
+    public void setId(String id)
     {
         this.id = id;
     }

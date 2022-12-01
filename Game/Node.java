@@ -1,10 +1,14 @@
+package Game;
 import java.util.HashMap;
 
 import GameObjects.GameObject;
+import GameObjects.Items.Item;
+import GameObjects.Mobs.Mob;
 
+import java.io.PushbackInputStream;
 import java.util.ArrayList;
 
-public class Node 
+public class Node extends GameObject
 {
     private String nodeName;
     private String nodeData;
@@ -96,6 +100,30 @@ public class Node
     public void addObject(GameObject g)
     {
         objects.add(g);
+    }
+
+    public GameObject[] getObjects()
+    {
+        return (GameObject[]) objects.toArray();
+    }
+
+    public Mob[] getMobs()
+    {
+        ArrayList<Mob> mobs = new ArrayList<Mob>();
+        for(GameObject go : objects) mobs.add((Mob) go);
+        return (Mob[]) mobs.toArray();
+    }
+
+    public Item[] getItems()
+    {
+        ArrayList<Mob> items = new ArrayList<Mob>();
+        for(GameObject go : objects) items.add((Mob) go);
+        return (Item[]) items.toArray();
+    }
+
+    public Node[] getRooms()
+    {
+        return (Node[]) rooms.toArray();
     }
 
     public String toString()

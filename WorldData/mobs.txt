@@ -1,6 +1,10 @@
 id:001;
 name:Bandit;
-talk:I'm not going to ask again! Give me your money or I'll gut you!;
+look:As you wander down the empty road, you hear a voice call out to you:;
+look:;
+look:   "You there! Empty your pockets or pay with your life!";
+look:;
+look:A bandit stands behind you with a sword drawn. He looks to have seen some things in his days of banditing. His threats seem serious.;
 danger:1;
 take:;
 dmg:1-6;

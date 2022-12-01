@@ -1,10 +1,11 @@
 package GameObjects.Mobs;
+import GameObjects.Items.*;
 
 public class NPC extends Mob
 {
-    public NPC(String name, int id, int hp, int atk1, int atk2)
+    public NPC(String name, String id, String talk, Item take, int hp, int atk1, int atk2)
     {
-        super(name, id, hp, atk1, atk2);
+        super(name, id, talk, take, false, hp, atk1, atk2);
     }
     
     public String getName()
@@ -12,7 +13,7 @@ public class NPC extends Mob
         return super.getName();
     }
 
-    public int getId()
+    public String getId()
     {
         return super.getId();
     }
@@ -32,9 +33,19 @@ public class NPC extends Mob
         super.setName(name);
     }
 
-    public void setId(int id)
+    public void setId(String id)
     {
         super.setId(id);
+    }
+
+    public void setTalk(String talk)
+    {
+        super.setTalk(talk);
+    }
+
+    public void setTake(Item take)
+    {
+        super.setTake(take);
     }
 
     public void setHP(int hp)

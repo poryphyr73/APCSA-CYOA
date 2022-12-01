@@ -6,254 +6,253 @@ look:A guard perched atop a tower yells down to you:;
 look:;
 look:    "WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY";
 look:;
-look:He is the only guard who can currently see you.;;
+look:He is the only guard who can currently see you.;
 com:goto-fort;
-com:attack-guard;
-com:talkto-guard;
+com:talkto-guard#002;
 obj:m002;
-items:;
-key: ;
+obj:m002;
+obj:moo2;
+key:;
 
 xy:01;
 short:the Northern Orcish Outpost;
-look: ;
+look:You stand outside of an outpost governed by the colony of orcs in the south-western part of the state.;
+look:The place is filled to the brim with ugly green creatures weilding heavy weaponry like crossbows and maces, a bloodthirsty look in each of their eyes.;
+look:You stand just far south enough that the orcs cannot see you, but you can see their desolate camp of smog and mud, and a nearby orc smoking a pipe on a log.;
 com:goto-outpost;
-com:goto-guard;
-com:attack-guard;
-mobs: ;
-key: ;
+com:goto-guard#002;
+com:attack-guard#002;
+obj:m002;
+obj:b002;
+key:;
 
 xy:21;
 short:a dirt road;
-look: ;
-com:fight-bandit;
-com:talkto-bandit;
-com:giveto-bandit;
-com:$travel-east;
-com:$travel-south;
-mobs: ;
+look:A seemingly empty and boring section of road lays before you.;
+look:The body of a dead bandit still lays on the path... Someone should clean that.;
+obj:m001;
 key: ;
         
 xy:31;
 short:the Northville market;
 look: ;
 com:1-3;
-mobs: ;
+obj: ;
 key: ;
 
 xy:41;
 short:the road to the City Port;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:51;
 short:the City Port;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:61;
 short:the bridge into Seaside City;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:71;
 short:Seaside City;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:02;
 short:the Valley of Bandits;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:22;
 short:a dirt road;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:32;
 short:the Northern town square;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:42;
 short:a dirt road;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:52;
 short:a dirt road;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:03;
 short:the Monastery;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:13;
 short:the mountain passage;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:23;
 short:your parents farm;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:33;
 short:the Northville orchard;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:43;
 short:a dirt road;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:53;
 short:the crossroads;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:63;
 short:the Easton mining settlement;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:73;
 short:the Easton mines;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:14;
 short:a witch's tower;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:24;
 short:a dirt road;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:34;
 short:the Haunted Bog;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:54;
 short:Riverland Village;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:64;
 short:a wizard's tower;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:15;
 short:the border to the Orcish Territory;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:25;
 short:the road to the border;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:55;
 short:the troll's bridge;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:06;
 short:the Orcish Capital;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:16;
 short:the Wasteland;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:36;
 short:the Sacred Temple;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
         
 xy:46;
 short:a broken bridge;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
         
 xy:56;
 short:Castle Town;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;
 
 xy:57;
 short:the Imperial Capital;
 look: ;
 com:- ;
-mobs: ;
+obj: ;
 key: ;

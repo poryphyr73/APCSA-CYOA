@@ -2,7 +2,7 @@ package GameObjects.Items;
 
 public class Weapon extends Item
 {
-    public Weapon(String name, int id, int buff)
+    public Weapon(String name, String id, int buff)
     {
         super(name, id, buff);
     }
@@ -12,7 +12,7 @@ public class Weapon extends Item
         return super.getName();
     }
 
-    public int getId()
+    public String getId()
     {
         return super.getId();
     }
@@ -24,12 +24,12 @@ public class Weapon extends Item
 
     public void setName(String name)
     {
-        super.setName(name);;
+        super.setName(name);
     }
 
-    public void setId(int id)
+    public void setId(String id)
     {
-        super.setId(id);;
+        super.setId(id);
     }
 
     public void setBuff(int buff)

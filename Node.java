@@ -1,4 +1,8 @@
 import java.util.HashMap;
+
+import GameObjects.Mobs.*;
+import GameObjects.Items.*;
+
 import java.util.ArrayList;
 
 public class Node 
@@ -6,6 +10,9 @@ public class Node
     private String nodeName;
     private String nodeData;
     private HashMap<String, ArrayList<String>> choices = new HashMap<String, ArrayList<String>>();
+    private ArrayList<Mob> mobs = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Node> rooms = new ArrayList<>();
 
     public Node()
     {

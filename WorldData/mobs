@@ -1,0 +1,13 @@
+id:001;
+name:Bandit;
+talk:I'm not going to ask again! Give me your money or I'll gut you!;
+take:;
+dmg:1-6;
+hp:10}
+
+id:002;
+name:Guard;
+talk:AHHH IM A GUARD;
+take:;
+dmg:1-6;
+hp:10}

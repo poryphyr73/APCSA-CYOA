@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+import GameObjects.Items.Item;
+
 public class Player 
 {
     private String name;

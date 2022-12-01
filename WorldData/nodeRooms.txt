@@ -7,34 +7,31 @@ look:;
 look:    "WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY";
 look:;
 look:He is the only guard who can currently see you.;;
-com:go-into the fort;
-com:attack-the guard;
-com:talk-to the guard;
-doors: ;
+com:goto-fort;
+com:attack-guard;
+com:talkto-guard;
+mobs:002;
 key: ;
-properties: xt?;
 
 xy:01;
 short:the Northern Orcish Outpost;
 look: ;
-com:approach-the outpost;
-com:approach-the guard;
-com:attack-the guard;
+com:goto-outpost;
+com:goto-guard;
+com:attack-guard;
 doors: ;
 key: ;
-properties: x;
 
 xy:21;
 short:a dirt road;
 look: ;
-com:fight-the bandit;
-com:talk-to the bandit;
-com:give-the bandit money;
+com:fight-bandit;
+com:talkto-bandit;
+com:giveto-bandit;
 com:$travel-east;
 com:$travel-south;
 doors: ;
 key: ;
-properties: x;
         
 xy:31;
 short:the Northville market;
@@ -42,7 +39,6 @@ look: ;
 com:1-3;
 doors: ;
 key: ;
-properties: ?;
 
 xy:41;
 short:the road to the City Port;
@@ -50,7 +46,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:51;
 short:the City Port;
@@ -58,7 +53,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:61;
 short:the bridge into Seaside City;
@@ -66,7 +60,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:71;
 short:Seaside City;
@@ -74,7 +67,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:02;
 short:the Valley of Bandits;
@@ -82,7 +74,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: xt;
 
 xy:22;
 short:a dirt road;
@@ -90,7 +81,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:32;
 short:the Northern town square;
@@ -98,7 +88,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:42;
 short:a dirt road;
@@ -106,7 +95,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:52;
 short:a dirt road;
@@ -114,7 +102,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:03;
 short:the Monastery;
@@ -122,7 +109,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:13;
 short:the mountain passage;
@@ -130,7 +116,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:23;
 short:your parents farm;
@@ -138,7 +123,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: o;
 
 xy:33;
 short:the Northville orchard;
@@ -146,7 +130,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:43;
 short:a dirt road;
@@ -154,7 +137,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:53;
 short:the crossroads;
@@ -162,7 +144,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:63;
 short:the Easton mining settlement;
@@ -170,7 +151,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:73;
 short:the Easton mines;
@@ -178,7 +158,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: xt;
 
 xy:14;
 short:a witch's tower;
@@ -186,7 +165,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:24;
 short:a dirt road;
@@ -194,7 +172,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:34;
 short:the Haunted Bog;
@@ -202,7 +179,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:54;
 short:Riverland Village;
@@ -210,7 +186,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:64;
 short:a wizard's tower;
@@ -218,7 +193,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;
 
 xy:15;
 short:the border to the Orcish Territory;
@@ -226,7 +200,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:25;
 short:the road to the border;
@@ -234,7 +207,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:55;
 short:the troll's bridge;
@@ -242,7 +214,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:06;
 short:the Orcish Capital;
@@ -250,7 +221,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: xxx;
 
 xy:16;
 short:the Wasteland;
@@ -258,7 +228,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: x;
 
 xy:36;
 short:the Sacred Temple;
@@ -266,7 +235,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: xt;
         
 xy:46;
 short:a broken bridge;
@@ -274,7 +242,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
         
 xy:56;
 short:Castle Town;
@@ -282,7 +249,6 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ;
 
 xy:57;
 short:the Imperial Capital;
@@ -290,4 +256,3 @@ look: ;
 com:- ;
 doors: ;
 key: ;
-properties: ?;

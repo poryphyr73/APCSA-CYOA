@@ -6,6 +6,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import GameObjects.*;
+import Commands.*;
+
 
 public class Manager 
 {

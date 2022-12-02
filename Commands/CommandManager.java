@@ -5,30 +5,14 @@ import GameObjects.Items.*;
 import GameObjects.Mobs.*;
 public class CommandManager
 {
-    private static Attack commandAttack;
-    private static Give commandGive;
-    private static GoTo commandGoTo;
-    private static Take commandTake;
-    private static Talk commandTalk;
-    private static Use commandUse;
-
-    public CommandManager()
-    {
-        commandAttack = new Attack();
-        commandGive = new Give();
-        commandGoTo = new GoTo();
-        commandTake = new Take();
-        commandTalk = new Talk();
-        commandUse = new Use();
-    }
+    private static Attack commandAttack = new Attack();
+    private static GoTo commandGoTo = new GoTo();
+    private static Take commandTake = new Take();
+    private static Talk commandTalk = new Talk();
 
     public static void attack(Mob target)
     {
         commandAttack.run(target);
-    }
-    public static void give(Item target)
-    {
-        commandGive.run(target);
     }
 
     public static void goTo(Mob target)
@@ -49,10 +33,5 @@ public class CommandManager
     public static void talk(Mob target)
     {
         commandTalk.run(target);
-    }
-
-    public static void use(Item target)
-    {
-        commandUse.run(target);
     }
 }

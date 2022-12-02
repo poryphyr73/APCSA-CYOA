@@ -5,7 +5,6 @@ import GameObjects.GameObject;
 import GameObjects.Items.Item;
 import GameObjects.Mobs.Mob;
 
-import java.io.PushbackInputStream;
 import java.util.ArrayList;
 
 public class Node extends GameObject
@@ -13,8 +12,8 @@ public class Node extends GameObject
     private String nodeName;
     private String nodeData;
     private HashMap<String, ArrayList<String>> choices = new HashMap<String, ArrayList<String>>();
-    private ArrayList<GameObject> objects = new ArrayList<>();
-    private ArrayList<Node> rooms = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Mob> mobs = new ArrayList<>();
 
     public Node()
     {
@@ -52,7 +51,9 @@ public class Node extends GameObject
             ret += key + ":\n";
             for(String value : choices.get(key))
             {
-                ret += "\t" + value;
+                int tagIndex = value.length();
+                if(value.contains("#")) tagIndex = value.indexOf("#");
+                ret += "\t" + value.substring(0, tagIndex);
             }
             ret += "\n";
         }
@@ -66,7 +67,9 @@ public class Node extends GameObject
         {
             for(String value : choices.get(key))
             {
-                ret.add(key + " " + value);
+                int tagIndex = value.length();
+                if(value.contains("#")) tagIndex = value.indexOf("#");
+                ret.add(key + " " + value.substring(0, tagIndex));
             }
         }
         return ret.toArray(new String[ret.size()]);
@@ -80,6 +83,11 @@ public class Node extends GameObject
             if(choices.get(key).size() == 0) choices.remove(key);
         }
         else System.out.println("ERROR");
+    }
+
+    public void removeItem(Item i)
+    {
+        if(items.contains(i)) items.remove(i);
     }
 
     public HashMap<String, ArrayList<String>> getChoicesHash()
@@ -97,33 +105,24 @@ public class Node extends GameObject
         nodeData = data;
     }
 
-    public void addObject(GameObject g)
+    public void addObject(Item g)
     {
-        objects.add(g);
+        items.add(g);
     }
 
-    public GameObject[] getObjects()
+    public void addObject(Mob m)
     {
-        return (GameObject[]) objects.toArray();
+        mobs.add(m);
     }
 
-    public Mob[] getMobs()
+    public ArrayList<Mob> getMobs()
     {
-        ArrayList<Mob> mobs = new ArrayList<Mob>();
-        for(GameObject go : objects) mobs.add((Mob) go);
-        return (Mob[]) mobs.toArray();
+        return mobs;
     }
 
-    public Item[] getItems()
+    public ArrayList<Item> getItems()
     {
-        ArrayList<Mob> items = new ArrayList<Mob>();
-        for(GameObject go : objects) items.add((Mob) go);
-        return (Item[]) items.toArray();
-    }
-
-    public Node[] getRooms()
-    {
-        return (Node[]) rooms.toArray();
+        return items;
     }
 
     public String toString()

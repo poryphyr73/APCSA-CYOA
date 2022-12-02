@@ -8,61 +8,83 @@ import GameObjects.Items.Weapon;
 
 public class Player 
 {
-    private String name;
-    private int health, maxHealth = 10;
-    private int skillPoints = 10;
-    private int[] stats = new int[4];
-    private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
-    private Weapon currentWeapon;
-    private Armor currentArmor;
+    private static String name;
+    private static int maxHealth = 10;
+    private static int health = maxHealth;
+    private static int skillPoints = 10;
+    private static int[] stats = new int[4];
+    private static HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
+    private static Weapon currentWeapon;
+    private static Armor currentArmor;
 
     public Player()
     {
         health = maxHealth;
     }
 
-    public void setName(String name)
+    public static void setName(String _name)
     {
-        this.name = name;
+        name = _name;
     }
 
-    public String getName()
+    public static String getName()
     {
         return name;
     }
 
-    public int getHealth()
+    public static int getHealth()
     {
         return health;
     }
 
-    public int getSkillPoints()
+    public static int getSkillPoints()
     {
         return skillPoints;
     }
 
-    public int getStat(int index)
+    public static int getStat(int index)
     {
         return stats[index];
     }
 
-    public void incrementStat(int index)
+    public static void incrementStat(int index)
     {
         stats[index]++;
     }
 
-    public void decrementSP()
+    public static void decrementSP()
     {
         skillPoints--;
     }
 
-    public void addItem(Item i)
+    public static void addItem(Item i)
     {
         if(!inventory.keySet().contains(i)) inventory.put(i, 0);
         inventory.put(i, inventory.get(i) + 1);
     }
 
-    public void useItem(int i)
+    public static int getDamage()
+    {
+        int damage = stats[0] + 1;
+        if(!currentWeapon.equals(null)) damage += currentWeapon.getBuff() / 10;
+        if(!currentArmor.equals(null)) damage += currentArmor.getBuff() / 10;
+        return damage;
+    }
+
+    public static int getDefense()
+    {
+        int defense = stats[1];
+        if(!currentWeapon.equals(null)) defense += currentWeapon.getBuff() % 10;
+        if(!currentArmor.equals(null)) defense += currentArmor.getBuff() % 10;
+        return defense;
+    }
+
+    public static void heal(int k)
+    {
+        health += k;
+    }
+
+    public static void useItem(int i)
     {
         Item cur = (Item) inventory.keySet().toArray()[i];
         if(cur.getClass().equals(Weapon.class))
@@ -87,5 +109,10 @@ public class Player
 
         inventory.put(cur, inventory.get(cur) - 1);
         if(inventory.get(cur) <= 0)  inventory.remove(cur);
+    }
+
+    public static HashMap<Item, Integer> getInventory()
+    {
+        return inventory;
     }
 }

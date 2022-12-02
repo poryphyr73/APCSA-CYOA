@@ -1,10 +1,10 @@
 package Game;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-import GameObjects.*;
+import GameObjects.Items.Item;
 import GameObjects.Mobs.Mob;
 
 import Commands.*;
@@ -13,32 +13,19 @@ public class Manager
 {
     private static Scanner kb;
     private static WorldMap map;
-    private static Player p;
     private static String input;
 
     private static void setup()
     {
         kb = new Scanner(System.in);
         map = new WorldMap(3, 0);
-        p = new Player();
         
         initializeNodes();
     }
 
-    public static void main(String[] args) 
+    public static void playerDeath()
     {
-        setup();
-        printStartingMenu();
-        
-        while(p.getHealth() > 0)
-        {
-            for(Mob m : map.getNode().getMobs())
-            {
-                if(m.getDanger()) CommandManager.attack(m);
-            }
-            printCurrentNodeData();
-            getInput();
-        }
+
     }
 
     private static void printStartingMenu()
@@ -46,20 +33,20 @@ public class Manager
         System.out.println("Hello! Welcome to the world of **WORKING TITLE**");
         System.out.println("\nBefore we get started adventuring, how about you tell me a little bit about yourself?");
         System.out.print("First of all, what name should the characters in this world know you by? ");
-        p.setName(kb.nextLine().toUpperCase());
-        System.out.println("\nWell, it's wonderful to have you with us " + p.getName() + "!");
+        Player.setName(kb.nextLine().toUpperCase());
+        System.out.println("\nWell, it's wonderful to have you with us " + Player.getName() + "!");
         System.out.println("Now lets get to know more about you and your experiences.");
         
-        while(p.getSkillPoints() > 0)
+        while(Player.getSkillPoints() > 0)
         {
             System.out.println("\nPick a skill to add a point to: ");
-            System.out.println("\n[ STRENGTH : " + p.getStat(0) + " (1) ]\t[ DEXTERITY : " + p.getStat(1) + " (2) ]");
-            System.out.println("\n[ WISDOM : " + p.getStat(2) + " (3) ]\t[ CHARISMA : " + p.getStat(3) + " (4) ]");
+            System.out.println("\n[ STRENGTH : " + Player.getStat(0) + " (1) ]\t[ DEXTERITY : " + Player.getStat(1) + " (2) ]");
+            System.out.println("\n[ WISDOM : " + Player.getStat(2) + " (3) ]\t[ CHARISMA : " + Player.getStat(3) + " (4) ]");
             int i = kb.nextInt() - 1;
             if(i >= 0 && i <= 4)
             {
-                p.incrementStat(i);
-                p.decrementSP();
+                Player.incrementStat(i);
+                Player.decrementSP();
             }
             else System.out.println("\nInvalid input: Please try again!");
         }
@@ -72,9 +59,10 @@ public class Manager
 
     private static void initializeNodes()
     {
-        HashMap<Integer, String> nameCoords = Initializer.getCoordinates();
-        HashMap<Integer, ArrayList<String>> commands = Initializer.getCommands();
-        HashMap<Integer, ArrayList<GameObject>> objects = Initializer.getObjects();
+        LinkedHashMap<Integer, String> nameCoords = Initializer.getCoordinates();
+        LinkedHashMap<Integer, ArrayList<String>> commands = Initializer.getCommands();
+        LinkedHashMap<Integer, ArrayList<Item>> items = Initializer.getItems();
+        LinkedHashMap<Integer, ArrayList<Mob>> mobs = Initializer.getMobs();
         ArrayList<String> descs = Initializer.getLooks();
         
         for(Integer key : Initializer.getCoordinates().keySet())
@@ -83,6 +71,7 @@ public class Manager
         }
         map.initializeGlobalMovementChoices();
         int i = 0;
+        System.out.println(map.getNamedNodes());
         for(Node n : map.getNamedNodes())
         {
             n.setData(descs.get(i));
@@ -91,7 +80,9 @@ public class Manager
                 if(cur.contains("$")) n.removeChoices(cur.substring(1, cur.indexOf("-")), cur.substring(cur.indexOf("-")));
                 else n.addChoiceData(cur.substring(0, cur.indexOf("-")), cur.substring(cur.indexOf("-") + 1));
             }
-            for(GameObject g : objects.get(i)) n.addObject(g);
+            for(Item item : items.get(i)) n.addObject(item);
+            for(Mob mob : mobs.get(i)) n.addObject(mob);
+
             i++;
         }
     }
@@ -131,5 +122,64 @@ public class Manager
             map.move(input.charAt(input.indexOf('-') + 1));
             return;
         }
+
+        if(input.contains("attack"))
+        {
+            for(String i : map.getNode().getChoicesHash().get("attack"))
+            {
+                for(Mob j : map.getNode().getMobs())
+                {
+                    if(i.substring(i.indexOf("#") + 1).equals(j.getId())) CommandManager.attack(j);
+                }
+            }
+            return;
+        }
+        
+        if(input.contains("take"))
+        {
+            Item toRemove = null;
+            String strToRemove = "";
+            for(String i : map.getNode().getChoicesHash().get("take"))
+            {
+                for(Item j : map.getNode().getItems())
+                {
+                    if(i.substring(i.indexOf("#") + 1).equals(j.getId()) && i.contains(input.substring(7))) 
+                    {
+                        CommandManager.take(j);
+                        toRemove = j;
+                        strToRemove = i;
+                        break;
+                    }
+                }
+            }
+            map.getNode().removeChoices("take", strToRemove);
+            map.getNode().removeItem(toRemove);
+            System.out.println(Player.getInventory());
+            return;
+        }
+
+        for(String i : map.getNode().getChoicesHash().get("talk"))
+            {
+                for(Mob j : map.getNode().getMobs())
+                {
+                    if(i.substring(i.indexOf("#") + 1).equals(j.getId())) CommandManager.talk(j);
+                }
+            }
+            return;
+    }
+
+    public static void main(String[] args) 
+    {
+        setup();
+        printStartingMenu();
+        
+        while(Player.getHealth() > 0)
+        {
+            for(Mob m : map.getNode().getMobs()) if(m.getDanger()) CommandManager.attack(m);
+            printCurrentNodeData();
+            getInput();
+        }
+
+        System.out.println("\n--------------\nGAME OVER :(\n--------------");
     }
 }

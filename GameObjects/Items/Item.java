@@ -44,4 +44,9 @@ public class Item extends GameObject
     {
         this.buff = buff;
     }
+
+    public String toString()
+    {
+        return name;
+    }
 }

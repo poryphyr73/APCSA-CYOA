@@ -12,8 +12,62 @@ hp:10;
 
 id:002;
 name:Guard;
-talk:AHHH IM A GUARD;
-danger:1;
-take:;
+look:A guard looks at you with a scowl. He doesn't seem to be much of a talker.;
+danger:0;
+take:i011;
 dmg:1-6;
 hp:10;
+
+id:003;
+name:Peasant;
+look:An old peasant looks at you and smiles. He wishes you well.;
+danger:0;
+take:;
+dmg:0-1;
+hp:1;
+
+id:004;
+name:Merchant;
+look:You approach a Merchant who seems to be too busy conducting business. Come back later maybe?;
+danger:0;
+take:i101;
+dmg:0-3;
+hp:8;
+
+id:104;
+name:Merchant;
+look:You approach a Merchant who seems to be too busy conducting business. He seems to be hiding something...;
+danger:0;
+take:i099;
+dmg:0-3;
+hp:8;
+
+id:005;
+name:Noble;
+look:A rich snob walks past without so much as a "hello".;
+look:How rude...;
+danger:0;
+take:i102;
+dmg:0-2;
+hp:15;
+
+id:006;
+name:Fisherman;
+look:A drab and tired man sits with a pipe in his mouth and his rod in the water. He nods to you as you walk by.;
+danger:0;
+take:i103;
+dmg:2-6;
+hp:10;
+
+id:100;
+name:Lord of Seaside;
+look:A man with very bright and flamboyant robes greets you:;
+look:;
+look:   "Hello traveller! I've heard of your passing through our great country. I believe our king could use someone like you!;
+look;   Find him in the capital, in the southeast of the land. He could use your help fighting the orcs in the west!";
+look:;
+look:He walks off proudly.;
+danger:0;
+take:i102;
+dmg:10-12;
+hp:30;

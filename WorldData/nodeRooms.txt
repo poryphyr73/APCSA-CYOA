@@ -7,11 +7,8 @@ look:;
 look:    "WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY";
 look:;
 look:He is the only guard who can currently see you.;
-com:goto-fort;
 com:talkto-guard#002;
 obj:m002;
-obj:m002;
-obj:moo2;
 key:;
 
 xy:01;
@@ -20,239 +17,260 @@ look:You stand outside of an outpost governed by the colony of orcs in the south
 look:The place is filled to the brim with ugly green creatures weilding heavy weaponry like crossbows and maces, a bloodthirsty look in each of their eyes.;
 look:You stand just far south enough that the orcs cannot see you, but you can see their desolate camp of smog and mud, and a nearby orc smoking a pipe on a log.;
 com:goto-outpost;
-com:goto-guard#002;
+com:talkto-guard#002;
 com:attack-guard#002;
 obj:m002;
-obj:b002;
 key:;
 
 xy:21;
 short:a dirt road;
 look:A seemingly empty and boring section of road lays before you.;
 look:The body of a dead bandit still lays on the path... Someone should clean that.;
+com:talkto-dead guy#100;
 obj:m001;
-key: ;
+key:;
         
 xy:31;
 short:the Northville market;
-look: ;
-com:1-3;
-obj: ;
-key: ;
+look:The people here seem very friendly. You feel smiles greet you as you walk through.;
+look:People are so trusting of you that you may take what you want from their market stalls for the duration of your trip.;
+look:A merchant is peddling his wares and a peasant is buying food for his family.;
+com:take-chainmail#002;
+com:take-iron sword#011;
+com:take-strength potion#101;
+com:attack-merchant#004;
+com:attack-peasant#003;
+com:talkto-merchant#004;
+com:talkto-peasant#003;
+obj:i002;
+obj:i011;
+obj:i101;
+obj:m003;
+obj:m004;
+key:;
 
 xy:41;
 short:the road to the City Port;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:This road is much nicer than most in the area. Beautiful cobblestones grace your feet.;
+look:You must be headed toward a richer part of the country.;
+com:talkto-me#004;
+obj:;
+key:;
 
 xy:51;
 short:the City Port;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:You stand at the heart of a bustling port. Across the water, you can see an island covered in towers, villages, and at its heart a large keep.;
+look:This is a pretty impressive place! I'm sure no one would mind if you took a few things from the shop stalls...;
+com:take-potionfortitude#102;
+com:take-potionstrength#101;
+obj:i102;
+obj:i101;
+key:;
 
 xy:61;
 short:the bridge into Seaside City;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:A grand, arched bridge sits above the strait between the big city and the port.;
+look:You spot some fishermen fishing for fish.;
+com:attack-fisherman#006;
+com:talkto-fisherman#006;
+obj:m006;
+key:;
 
 xy:71;
 short:Seaside City;
-look: ;
-com:- ;
-obj: ;
+look:A brilliant and ornate city greets you as you step throught the front gates. You can see the Lord of the city's castle strolling through town.;
+look:Stop in and have a chat?;
+com:talkto-lord#100;
+obj:m100;
+obj:m004;
+obj:m004;
 key: ;
 
 xy:02;
 short:the Valley of Bandits;
-look: ;
-com:- ;
-obj: ;
+look:This valley is notorious for thieveing highwaymen. Be on gaurd!;
+com:-;
+obj:m001;
 key: ;
 
 xy:22;
 short:a dirt road;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:A boring old dirt road..;
+com:-;
+obj:;
+key:;
 
 xy:32;
-short:the Northern town square;
-look: ;
-com:- ;
-obj: ;
-key: ;
+short:the Northville town square;
+look:The more residential portion of Northville. Nice hovels!;
+com:-;
+obj:;
+key:;
 
 xy:42;
 short:a dirt road;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:A seemingly empty and boring section of road lays before you.;
+look:The body of a dead bandit still lays on the path... Someone should clean that.;
+com:talkto-dead guy#100;
+obj:m001;
+key:;
 
 xy:52;
 short:a dirt road;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:A boring old dirt road..;
+com:-;
+obj:;
+key:;
 
 xy:03;
 short:the Monastery;
-look: ;
-com:- ;
-obj: ;
-key: ;
+look:You enter a large temple full of practicing monks. They all seem to be trying to pray but the orcs up north have been causing too much trouble;
+look:This place is very quiet. I shouldn't stay too long and iterrupt!;
+com:-;
+obj:;
+key:;
 
 xy:13;
 short:the mountain passage;
-look: ;
+look:A very dangerous passag through the mountains. Danger galore!;
 com:- ;
 obj: ;
 key: ;
 
 xy:23;
 short:your parents farm;
-look: ;
+look:The most peaceful place you've ever known. You grew up here and your parents would want you to fulfill their legacy by freeing the country.;
 com:- ;
 obj: ;
 key: ;
 
 xy:33;
 short:the Northville orchard;
-look: ;
+look:This is the main source of food for Northville. They call it an orchard, but it has farms of every kind. Lots of fresh apples on the trees!;
 com:- ;
 obj: ;
 key: ;
 
 xy:43;
 short:a dirt road;
-look: ;
+look:A boring old dirt road..;
 com:- ;
 obj: ;
 key: ;
 
 xy:53;
 short:the crossroads;
-look: ;
+look:A boring old dirt road.. but there's an intersection now!;
 com:- ;
 obj: ;
 key: ;
 
 xy:63;
 short:the Easton mining settlement;
-look: ;
+look:As you enter the Easton mining settlement you see posters all around advertising a cash reward for clearing the mines of monsters.;
+look:Unfortunately, it doesn't look like there are many people here to pay the reward to you. The place has long since been deserted.;
+look:That doesn't mean you can't spelunk for fun though!;
 com:- ;
 obj: ;
 key: ;
 
 xy:73;
 short:the Easton mines;
-look: ;
+look:A dangerous cavern full of massive spiders. Be very very careful.;
 com:- ;
 obj: ;
 key: ;
 
 xy:14;
 short:a witch's tower;
-look: ;
+look:As you enter the witch's tower, you notice her toiling over a cauldron. She seems to be in distress:;
+look:;
+look:   "If you're looking for magic items, you can take this ring. It's not like I'll end up using it...";
+look:;
+look:Maybe there's someone out there for everyone. For now though, might as well use that ring.;
 com:- ;
 obj: ;
 key: ;
 
 xy:24;
 short:a dirt road;
-look: ;
+look:A boring old dirt road..;
 com:- ;
 obj: ;
 key: ;
 
 xy:34;
 short:the Haunted Bog;
-look: ;
+look:This haunted swamp is known for being full of giant bloated insects that just want to suck your blood out. Not the nicest place to be...;
 com:- ;
 obj: ;
 key: ;
 
 xy:54;
 short:Riverland Village;
-look: ;
+look:Riverland Village is a small fishing settlement just south of Easton. They aren't known for much, but they fish up some big catches.;
+look:Rumour has it that Riverland is where all the Easton citizens fled to after the mines were corrupted. Maybe one day they'll go home...;
 com:- ;
 obj: ;
 key: ;
 
 xy:64;
 short:a wizard's tower;
-look: ;
+look:As you enter the wizard's tower, you see him bent over some spellbooks, chanting some incantation. He seems in distress:;
+look:;
+look:   "If you're looking for magic items, you can take this ring. It's not like I'll end up using it...";
+look:;
+look:Maybe there's someone out there for everyone. In the meantime, might as well take advantage of this sweet ring!;
 com:- ;
 obj: ;
 key: ;
 
 xy:15;
 short:the border to the Orcish Territory;
-look: ;
+look: This place is creepy. Dead trees, dark skies, and the everlooming threat of orcs. Scary place indeed.;
 com:- ;
 obj: ;
 key: ;
 
 xy:25;
 short:the road to the border;
-look: ;
+look:The closer you get to the border, the greyer the skies get. The orcish fortress on the horizen inspires fear in the hearts of the strongest warriors.;
 com:- ;
 obj: ;
 key: ;
 
 xy:55;
 short:the troll's bridge;
-look: ;
+look:Maybe it's only an old wive's tail, but it was once said that a troll would take your money when you passed over this bridge. How ridiculous!;
 com:- ;
 obj: ;
 key: ;
 
 xy:06;
 short:the Orcish Capital;
-look: ;
+look:The gloomiest place in the entire world, and you've managed to overthrow it! Congratulations! (This is the end of the "Main Quest". Feel free to keep exploring!);
 com:- ;
 obj: ;
 key: ;
 
 xy:16;
 short:the Wasteland;
-look: ;
-com:- ;
-obj: ;
-key: ;
-
-xy:36;
-short:the Sacred Temple;
-look: ;
-com:- ;
-obj: ;
-key: ;
-        
-xy:46;
-short:a broken bridge;
-look: ;
+look:Nothing could survive out here. Not even the orcs.;
 com:- ;
 obj: ;
 key: ;
         
 xy:56;
 short:Castle Town;
-look: ;
+look:You enter a small town on the outskirts of the capital's walls. Wheat fields, markets, and stables adorn the hills. This is about as laid back as it gets.;
 com:- ;
 obj: ;
 key: ;
 
 xy:57;
 short:the Imperial Capital;
-look: ;
+look:You set foot in the lavish imperial castle.;
+look:Just to be let in is an honour. The plush red carpet paves the way to the king, sitting in his throne at the end of the hall.;
 com:- ;
 obj: ;
 key: ;

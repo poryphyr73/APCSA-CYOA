@@ -2,10 +2,9 @@ package Game;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-import GameObjects.GameObject;
 import GameObjects.Items.Armor;
 import GameObjects.Items.Consumable;
 import GameObjects.Items.Item;
@@ -16,9 +15,9 @@ import GameObjects.Mobs.NPC;
 
 public class Initializer 
 {
-    public static HashMap<Integer, String> getCoordinates()
+    public static LinkedHashMap<Integer, String> getCoordinates()
     {
-        HashMap<Integer, String> coords = new HashMap<Integer, String>();
+        LinkedHashMap<Integer, String> coords = new LinkedHashMap<Integer, String>();
         try {
             File worldData = new File("WorldData/nodeRooms.txt");
             Scanner reader = new Scanner(worldData);
@@ -83,9 +82,9 @@ public class Initializer
         return shorts;
     }
 
-    public static HashMap<Integer, ArrayList<String>> getCommands()
+    public static LinkedHashMap<Integer, ArrayList<String>> getCommands()
     {
-        HashMap<Integer, ArrayList<String>> commands = new HashMap<Integer, ArrayList<String>>();
+        LinkedHashMap<Integer, ArrayList<String>> commands = new LinkedHashMap<Integer, ArrayList<String>>();
         try {
             File worldData = new File("WorldData/nodeRooms.txt");
             Scanner reader = new Scanner(worldData);
@@ -98,6 +97,7 @@ public class Initializer
                 if(c.contains("com"))
                 {
                     comList.add(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
+                    System.out.println(c);
                 }
                 else if(c.contains("obj"))
                 {
@@ -116,14 +116,51 @@ public class Initializer
         return commands;
     }
 
-    public static HashMap<Integer, ArrayList<GameObject>> getObjects()
+    public static LinkedHashMap<Integer, ArrayList<Item>> getItems()
     {
-        HashMap<Integer, ArrayList<GameObject>> objects = new HashMap<Integer, ArrayList<GameObject>>();
+        LinkedHashMap<Integer, ArrayList<Item>> objects = new LinkedHashMap<Integer, ArrayList<Item>>();
         try {
             File worldData = new File("WorldData/nodeRooms.txt");
             Scanner reader = new Scanner(worldData);
             int i = 0;
-            ArrayList<GameObject> objList = new ArrayList<>();
+            ArrayList<Item> objList = new ArrayList<>();
+ 
+            while (reader.hasNextLine()) {
+                String c = reader.nextLine();
+                
+                if(c.contains("obj"))
+                {
+                    if(c.contains("i"))
+                    {
+                        Item cur = getItemData(c.substring(c.indexOf("i") + 1, c.indexOf(";")));
+                        objList.add(cur);
+                    }
+                }
+                else if(c.contains("key"))
+                {
+                    ArrayList<Item> a = new ArrayList<>();
+                    for(int j = 0; j < objList.size(); j++) a.add(objList.get(j));
+                    objects.put(i, a);
+                    i++;
+                    objList.clear();
+                }
+            }
+            reader.close();
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return objects;
+    }
+
+    public static LinkedHashMap<Integer, ArrayList<Mob>> getMobs()
+    {
+        LinkedHashMap<Integer, ArrayList<Mob>> objects = new LinkedHashMap<Integer, ArrayList<Mob>>();
+        try {
+            File worldData = new File("WorldData/nodeRooms.txt");
+            Scanner reader = new Scanner(worldData);
+            int i = 0;
+            ArrayList<Mob> objList = new ArrayList<>();
  
             while (reader.hasNextLine()) {
                 String c = reader.nextLine();
@@ -135,15 +172,10 @@ public class Initializer
                         Mob cur = getMobData(c.substring(c.indexOf("m") + 1, c.indexOf(";")));
                         objList.add(cur);
                     }
-                    else if(c.contains("i"))
-                    {
-                        Item cur = getItemData(c.substring(c.indexOf("i") + 1, c.indexOf(";")));
-                        objList.add(cur);
-                    }
                 }
                 else if(c.contains("key"))
                 {
-                    ArrayList<GameObject> a = new ArrayList<>();
+                    ArrayList<Mob> a = new ArrayList<>();
                     for(int j = 0; j < objList.size(); j++) a.add(objList.get(j));
                     objects.put(i, a);
                     i++;
@@ -211,15 +243,19 @@ public class Initializer
                 {
                     c = reader.nextLine();
                     name = c.substring(c.indexOf(":") + 1, c.indexOf(";"));
-                    c = reader.nextLine();
-                    talk = c.substring(c.indexOf(":") + 1, c.indexOf(";"));
-                    c = reader.nextLine();
+                    while(true)
+                    {
+                        c = reader.nextLine();
+                        if(c.contains("look")) talk += c.substring(c.indexOf(":") + 1, c.indexOf(";")) + "\n";
+                        else break;
+                    }
                     danger = c.substring(c.indexOf(":"), c.indexOf(";")).contains("1");
                     c = reader.nextLine();
                     take = getItemData(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
                     c = reader.nextLine();
+                    
                     dmgRange[0] = Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf("-")).replaceAll("[^0-9]", ""));
-                    dmgRange[1] = Integer.parseInt(c.substring(c.indexOf("-"), c.indexOf(";")).replaceAll("[^0-9]", ""));
+                    dmgRange[1] = Integer.parseInt(c.substring(c.indexOf("-") + 1, c.indexOf(";")).replaceAll("[^0-9]", ""));
                     c = reader.nextLine();
                     hp =  Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf(";")).replaceAll("[^0-9]", ""));
                     break;

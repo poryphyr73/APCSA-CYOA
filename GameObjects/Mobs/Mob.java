@@ -2,7 +2,6 @@ package GameObjects.Mobs;
 import GameObjects.GameObject;
 import GameObjects.Items.*;
 import java.util.Random;
-import java.util.function.BiPredicate;
 
 public class Mob extends GameObject
 {
@@ -46,11 +45,9 @@ public class Mob extends GameObject
         return talk;
     }
 
-    public String getTake()
+    public Item getTake()
     {
-        String returnID = take.getId();
-        take = null;
-        return returnID;
+        return take;
     }
 
     public boolean getDanger()

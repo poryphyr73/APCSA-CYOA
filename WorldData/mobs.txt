@@ -12,11 +12,20 @@ hp:10;
 
 id:002;
 name:Guard;
-look:A guard looks at you with a scowl. He doesn't seem to be much of a talker.;
+look:A guard looks at you with a scowl. He doesn't seem to be much of a talker. He does manage to utter a simple couple of sentences however:;
+look:   "WHO GOES THERE? TRESPASSERS BE WARNED, ALL UNAUTHORIZED PERSONS WILL BE KILLED UPON ENTRY";
 danger:0;
 take:i011;
 dmg:1-6;
 hp:10;
+
+id:102;
+name:Orcish Guard;
+look:A member of the orcish military attacks you before you can even get a sense of your surroundings. Bloodthirsty!;
+danger:1;
+take:;
+dmg:4-6;
+hp:12;
 
 id:003;
 name:Peasant;
@@ -55,7 +64,7 @@ id:006;
 name:Fisherman;
 look:A drab and tired man sits with a pipe in his mouth and his rod in the water. He nods to you as you walk by.;
 danger:0;
-take:i103;
+take:;
 dmg:2-6;
 hp:10;
 
@@ -71,3 +80,98 @@ danger:0;
 take:i102;
 dmg:10-12;
 hp:30;
+
+id:717;
+name:Roadside Magic Man;
+look:As you approach the man in the tent, a fog grows around you. Things start to feel hazy. You hear a voice from all around you:;
+look:;
+look:   "If you can beat me in a duel, you can have my magic robe that enhances the wearer's muscles.";
+look:;
+look:The man seems to be telepathically challenging you?;
+danger:0;
+take:i717;
+dmg:14-15;
+hp:50;
+
+id:171;
+name:Roadside Magic Man;
+look:As you approach the man in the tent, a fog grows around you. Things start to feel hazy. You hear a voice from all around you:;
+look:;
+look:   "If you can beat me in a duel, you can have my magic robe that enhances the wearer's muscles.";
+look:;
+look:The man seems to be telepathically challenging you?;
+danger:0;
+take:i171;
+dmg:10-11;
+hp:100;
+
+id:009;
+name:Monk;
+look:He's praying. He always will be. You can try and come back later, but he will still be at it.;
+danger:0;
+take:i105;
+dmg:7-8;
+hp:30;
+
+id:010;
+name:Mutant Spider;
+look: A giant, hulking spider attacks with gusto. It hisses and lunges at you fearlessly;
+danger:1;
+take:;
+dmg:3-6;
+hp:20;
+
+id:110;
+name:Easton Broodmother;
+look:The biggest and baddest of them all, the Easton Broodmother is responsible for the deaths of many.;
+look:Just hope you aren't added to her list...;
+danger:1;
+take:i014;
+dmg:7-10;
+hp:50;
+
+id:112;
+name:Violent Bloatfly;
+look:A bloodsucking bug the size of a basketball comes hurdling toward you. It is attacking to kill!;
+danger:1;
+take:;
+dmg:2-3;
+hp:4;
+
+id:113;
+name:Bloatfly;
+look:A bloodsucking bug the size of a basketball floats aimlessly.;
+danger:0;
+take:;
+dmg:1-2;
+hp:6;
+
+id:909;
+name:Troll of the Bridge;
+look:A giant troll steps out from under the bridge. He came to kick butts and take money, and his pockets are already full of money!;
+look:But why do his pockets smell like cocoa?;
+danger:1;
+take:i111;
+dmg:2-8;
+hp:30;
+
+id:999;
+name:The Orc King;
+look:A giant orc of at least eight feet towers before you weilding a massive claymore.;
+look:;
+look:   "I've heard of you coming to overthrow me. Don't think I'll make this easy for you.";
+look:;
+look:His voice is grim and evil. He grins as he charges toward you;
+danger:1;
+take:i103;
+dmg:1-20;
+hp:150;
+
+id:990;
+name:The Imperial King;
+look:   "I hear you've been travelling the country and you're quite the impressive advenurer. The orc king has taken a suit of armour from me.;
+look:   Kill him and you may keep it. Beware though, he is a very tough adversary. Do not underestimate him.";
+danger:0;
+take:i103;
+dmg:1-20;
+hp:150;

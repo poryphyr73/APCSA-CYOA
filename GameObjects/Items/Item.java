@@ -47,6 +47,6 @@ public class Item extends GameObject
 
     public String toString()
     {
-        return name;
+        return name + ": STRENGTH BUFF = " + (buff/10) + ", DEXTERITY BUFF = " + (buff % 10);
     }
 }

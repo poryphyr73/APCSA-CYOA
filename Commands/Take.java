@@ -10,7 +10,6 @@ public class Take implements Command
     public void run(GameObject target) 
     {
         Item _target = (Item) target;
-        System.out.println("DEBUG");
         Player.addItem(_target);
     }
 }

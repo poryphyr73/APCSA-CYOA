@@ -97,9 +97,8 @@ public class Initializer
                 if(c.contains("com"))
                 {
                     comList.add(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
-                    System.out.println(c);
                 }
-                else if(c.contains("obj"))
+                else if(c.contains("key"))
                 {
                     ArrayList<String> a = new ArrayList<>();
                     for(int j = 0; j < comList.size(); j++) a.add(comList.get(j));
@@ -164,12 +163,12 @@ public class Initializer
  
             while (reader.hasNextLine()) {
                 String c = reader.nextLine();
-                
                 if(c.contains("obj"))
                 {
                     if(c.contains("m"))
                     {
                         Mob cur = getMobData(c.substring(c.indexOf("m") + 1, c.indexOf(";")));
+                        
                         objList.add(cur);
                     }
                 }
@@ -251,7 +250,8 @@ public class Initializer
                     }
                     danger = c.substring(c.indexOf(":"), c.indexOf(";")).contains("1");
                     c = reader.nextLine();
-                    take = getItemData(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
+                    if(c.substring(c.indexOf(":") + 1, c.indexOf(";")).length() > 0) take = getItemData(c.substring(c.indexOf(":") + 1, c.indexOf(";")));
+                    else take = new Item("nothing", "-1", 00);
                     c = reader.nextLine();
                     
                     dmgRange[0] = Integer.parseInt(c.substring(c.indexOf(":"), c.indexOf("-")).replaceAll("[^0-9]", ""));

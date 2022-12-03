@@ -13,6 +13,7 @@ public class Attack implements Command
     @Override
     public void run(GameObject target) {
         Mob opponent = (Mob) target;
+        System.out.println("------------");
         if(opponent.getDanger()) System.out.println("\n" + opponent.getTalk());
         System.out.println("You engage in combat with a " + opponent.getName() + "!");
         while(true)
@@ -34,7 +35,7 @@ public class Attack implements Command
                     opponent.setHP(opponent.getHP() - Player.getDamage());
                     System.out.println("The " + opponent.getName() + " takes " + damage + " damage!\n");
                 }
-                else Player.useItem(input); //FIX THIS
+                else Player.useItem(); //FIX THIS
                 break;
             }
             if(opponent.getHP() <= 0) 
@@ -42,10 +43,14 @@ public class Attack implements Command
                 System.out.println("You won the battle!\n");
                 if(!opponent.getTake().equals(null)) 
                 {
-                    Player.addItem(opponent.getTake());
-                    System.out.println("You got a(n) " + opponent.getTake().getName() + "!");
+                    if(!opponent.getTake().getId().equals("-1"))
+                    {
+                        Player.addItem(opponent.getTake());
+                        System.out.println("You got a(n) " + opponent.getTake().getName() + "!");
+                    }
                     Player.heal(10 - Player.getHealth());
                     System.out.println("You were healed to full health!");
+                    Manager.getMap().getNode().removeMob(opponent);
                 }
                 break;
             }
@@ -55,7 +60,6 @@ public class Attack implements Command
             Player.heal(-Math.min(dmg, dmg - Player.getDefense()));
             if(Player.getHealth() <= 0) 
             {
-                Manager.playerDeath();
                 break;
             }
         }

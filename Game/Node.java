@@ -57,6 +57,8 @@ public class Node extends GameObject
             }
             ret += "\n";
         }
+        ret += "use:\n";
+        ret += "info:\n";
         return ret;
     }
 
@@ -88,6 +90,11 @@ public class Node extends GameObject
     public void removeItem(Item i)
     {
         if(items.contains(i)) items.remove(i);
+    }
+
+    public void removeMob(Mob i)
+    {
+        if(mobs.contains(i)) mobs.remove(i);
     }
 
     public HashMap<String, ArrayList<String>> getChoicesHash()

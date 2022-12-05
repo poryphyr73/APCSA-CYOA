@@ -2,8 +2,6 @@ package Game;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import javax.swing.text.html.HTMLDocument.RunElement;
-
 import GameObjects.Items.Armor;
 import GameObjects.Items.Consumable;
 import GameObjects.Items.Item;
@@ -41,11 +39,21 @@ public class Player
         return skillPoints;
     }
 
+    
+    /** Get the stat value at a given index
+     * 
+     * @param index The index of the array to search at. 0 returns the Player's strength, 1 returns the dexterity.
+     * @return int The stat at the given index
+     */
     public static int getStat(int index)
     {
         return stats[index];
     }
 
+    /** Add one skill point to a stat at a given index of stats Array
+     * 
+     * @param index The index of stats[] to add a point to. 0 adds a point to strength, 1 adds a point to dexterity
+     */
     public static void incrementStat(int index)
     {
         stats[index]++;
@@ -56,12 +64,21 @@ public class Player
         skillPoints--;
     }
 
+    /** Add an Item to the player's inventory
+     * Adds a new key for it if the player does not yet have one, increments the number of that Item type in the inventory otherwise
+     * 
+     * @param i The Item to add
+     */
     public static void addItem(Item i)
     {
         if(!inventory.keySet().contains(i)) inventory.put(i, 0);
         inventory.put(i, inventory.get(i) + 1);
     }
 
+    /** Gets the player's damage output
+     * 
+     * @return int The damage as a sum of the players strength and item strength buffs
+     */
     public static int getDamage()
     {
         int damage = stats[0] + 1;
@@ -70,6 +87,10 @@ public class Player
         return damage;
     }
 
+    /** Get the player's defense from damage
+     * 
+     * @return int The damage from which the player can be defended from as a sum of the player's strength (dodge) and item dexterity buffs
+     */
     public static int getDefense()
     {
         int defense = stats[1];
@@ -78,9 +99,13 @@ public class Player
         return defense;
     }
 
-    public static void heal(int k)
+    /** Damage the player. Can also be used to heal the player if k is negative
+     * 
+     * @param k The amount of damage to be dealt to the player
+     */
+    public static void damage(int k)
     {
-        health += k;
+        health -= k;
     }
 
     public static Weapon getCurrentWeapon()
@@ -93,6 +118,12 @@ public class Player
         return currentArmor;
     }
 
+    /* "Use" an item from the player's inventory
+     * 
+     * if the Item is consumable, apply its buffs and delete it
+     * if the Item is a weapon, swap it with the equipped item
+     * if the Item is armor, swap it with the equipped item
+     */
     public static void useItem()
     {
         int iteration = 1;

@@ -15,6 +15,12 @@ import GameObjects.Mobs.NPC;
 
 public class Initializer 
 {
+    
+    
+    /** Get the coordinates and names of every intended location to initialize the map from a text file.
+     * 
+     * @return LinkedHashMap<Integer, String> A HashMap with a two digit Integer key of format xy and String values representing the names of the respective node
+     */
     public static LinkedHashMap<Integer, String> getCoordinates()
     {
         LinkedHashMap<Integer, String> coords = new LinkedHashMap<Integer, String>();
@@ -52,6 +58,11 @@ public class Initializer
         return coords;
     }
 
+    
+    /** Get the view at every named location on the map from a text file.
+     * 
+     * @return ArrayList<String> An ArrayList with String keys representing the descriptions at each map location
+     */
     public static ArrayList<String> getLooks()
     {
         ArrayList<String> shorts = new ArrayList<String>();
@@ -82,6 +93,11 @@ public class Initializer
         return shorts;
     }
 
+    
+    /** Get a list of commands for each named location on the map from a text file
+     * 
+     * @return LinkedHashMap<Integer, ArrayList<String>> A Hashmap with Integer keys for coordinates and String ArrayList values with excepted command keys and parameters
+     */
     public static LinkedHashMap<Integer, ArrayList<String>> getCommands()
     {
         LinkedHashMap<Integer, ArrayList<String>> commands = new LinkedHashMap<Integer, ArrayList<String>>();
@@ -115,6 +131,11 @@ public class Initializer
         return commands;
     }
 
+    
+    /** Get a list of every Item to be found at every location of the map upon world initialization from a text file
+     * 
+     * @return LinkedHashMap<Integer, ArrayList<Item>> A HashMap with Integer keys for coordinates (xy) and Item ArrayLists for the items at xy
+     */
     public static LinkedHashMap<Integer, ArrayList<Item>> getItems()
     {
         LinkedHashMap<Integer, ArrayList<Item>> objects = new LinkedHashMap<Integer, ArrayList<Item>>();
@@ -152,6 +173,11 @@ public class Initializer
         return objects;
     }
 
+    
+    /** Get a list of every Mob to be found at every location of the map upon world initialization from a text file
+     * 
+     * @return LinkedHashMap<Integer, ArrayList<Mob>> A HashMap with Integer keys for coordinates (xy) and Mob ArrayLists for the mobs at xy
+     */
     public static LinkedHashMap<Integer, ArrayList<Mob>> getMobs()
     {
         LinkedHashMap<Integer, ArrayList<Mob>> objects = new LinkedHashMap<Integer, ArrayList<Mob>>();
@@ -189,6 +215,12 @@ public class Initializer
         return objects;
     }
 
+    
+    /** Get the signature of any Item by ID based on text file data.
+     * 
+     * @param id The id value of the requested Item
+     * @return Item An Item with the requested stats reformatted to any Item type
+     */
     public static Item getItemData(String id)
     {
         String type = "";
@@ -223,6 +255,12 @@ public class Initializer
         return new Consumable(name, id, buff);
     }
 
+    
+    /** Get the signature of any Mob based on text file data
+     * 
+     * @param id The id value of the requested Mob
+     * @return Mob A Mob with the requested stats reformatted to hostile or passive subclass
+     */
     public static Mob getMobData(String id)
     {
         boolean danger = false;

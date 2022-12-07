@@ -48,7 +48,7 @@ public class Attack implements Command
                         Player.addItem(opponent.getTake());
                         System.out.println("You got a(n) " + opponent.getTake().getName() + "!");
                     }
-                    Player.heal(10 - Player.getHealth());
+                    Player.damage(-10 + Player.getHealth());
                     System.out.println("You were healed to full health!");
                     Manager.getMap().getNode().removeMob(opponent);
                 }
@@ -57,7 +57,7 @@ public class Attack implements Command
             System.out.println("The " + opponent.getName() + " attacks!\n");
             int dmg = opponent.getAtk();
             System.out.println("The " + opponent.getName() + " deals " + dmg + " (-" + Math.min(dmg, Player.getDefense()) + " from defense boosts) damage!\n");
-            Player.heal(-Math.min(dmg, dmg - Player.getDefense()));
+            Player.damage(Math.min(dmg, dmg - Player.getDefense()));
             if(Player.getHealth() <= 0) 
             {
                 break;
